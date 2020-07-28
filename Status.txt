@@ -1,0 +1,3 @@
+Need to figure out why pushing to the
+master branch didn't affect my git commit
+counter...
