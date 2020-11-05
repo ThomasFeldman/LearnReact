@@ -7,27 +7,50 @@ class App extends React.Component {
 
         //This is the only time you would ever do direct assignment or "state = something",
         //when you initialize it. To change values later on, always use this.setState({new value})
-        this.state = { lat: null, long: null };
+        this.state = { lat: null, errorMessage: '' };
 
         window.navigator.geolocation.getCurrentPosition(
             (position) => {
                 this.setState({ lat: position.coords.latitude })
-                this.setState({long: position.coords.longitude})
             },
-            (err) => console.log(err)
+            (err) => {
+                this.setState({ errorMessage: err.message });
+            }
         );
     }
 
+    componentDidMount() {
+        console.log('My component was rendered to the screen');
+    }
+
+    componentDidUpdate(){
+        console.log('My component was just updated - it rerendered!');
+    }
+
     render() {
-        return (
+
+        if(!this.state.lat && this.state.errorMessage){
+            return(
             <div> 
-                Latitude: {this.state.lat}
-                <br/>
-                Longitude: {this.state.long}
+                Error: {this.state.errorMessage}
             </div>
             );
+        }
+        if(this.state.lat && !this.state.errorMessage){
+            return(
+                <div>
+                    Latitude: {this.state.lat}
+                </div>
+            );
+        }
+        return(
+            <div>
+                Loading...
+            </div>
+        );
+    };
 
-    }
+
 }
 
 ReactDOM.render(
