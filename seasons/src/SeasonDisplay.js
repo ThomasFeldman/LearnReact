@@ -2,7 +2,7 @@ import './SeasonDisplay.css';
 import React from 'react';
 
 const seasonConfig = {
-    sumer: {
+    summer: {
         text: 'Lets hit the beach',
         iconName: 'sun'
     },
