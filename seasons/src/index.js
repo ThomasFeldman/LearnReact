@@ -25,7 +25,7 @@ class App extends React.Component {
         }
 
     return <Spinner message="Please accept location request"></Spinner>;
-
+    
     }
 
     render() {
