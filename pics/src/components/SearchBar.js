@@ -7,9 +7,9 @@ class SearchBar extends React.Component {
     //First way to solve error
     onFormSubmit = (event) => {
         event.preventDefault();
-
-        console.log(this.state.term);
-    }
+        
+        this.props.onSubmit(this.state.term);
+    };
 
 
     
